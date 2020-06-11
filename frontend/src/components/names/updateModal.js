@@ -76,7 +76,7 @@ class UpdateModal extends Component {
     return (
       <>
         <Button variant="primary" onClick={this.handleShow}>
-          Update name
+          Edit
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>

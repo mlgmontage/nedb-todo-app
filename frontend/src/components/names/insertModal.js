@@ -57,12 +57,12 @@ class InsertModal extends Component {
     return (
       <>
         <Button variant="primary" onClick={this.handleShow}>
-          Launch
+          Add name
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Launch</Modal.Title>
+            <Modal.Title>Insert name</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form.Group controlId="formName">
@@ -78,7 +78,7 @@ class InsertModal extends Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.handleInsert} variant="primary">
-              Save
+              Insert
             </Button>
             <Button onClick={this.handleClose} variant="secondary">
               Cancel
