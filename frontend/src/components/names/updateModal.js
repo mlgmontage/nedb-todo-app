@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 
-class InsertModal extends Component {
+class UpdateModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,8 +10,13 @@ class InsertModal extends Component {
     };
     this.handleClose = this.handleClose.bind(this);
     this.handleShow = this.handleShow.bind(this);
-    this.handleInsert = this.handleInsert.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.loadData = this.loadData.bind(this);
+    this.handleUpdate = this.handleUpdate.bind(this);
+  }
+
+  componentDidMount() {
+    this.loadData();
   }
 
   handleChange(e) {
@@ -26,22 +31,36 @@ class InsertModal extends Component {
     });
   }
 
-  handleInsert() {
+  loadData() {
+    const id = this.props.id;
+    fetch(`http://localhost:8000/name/get/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        this.setState({
+          name: data.data.name,
+        });
+      });
+  }
+
+  handleUpdate() {
     if (this.state.name == null) return;
-    fetch("http://localhost:8000/name/insert", {
+    const id = this.props.id;
+    fetch("http://localhost:8000/name/update", {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      method: "POST",
+      method: "PUT",
       body: JSON.stringify({
+        id: id,
         name: this.state.name,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
         this.setState({
-          name: "",
+          name: null,
         });
       });
   }
@@ -57,12 +76,12 @@ class InsertModal extends Component {
     return (
       <>
         <Button variant="primary" onClick={this.handleShow}>
-          Launch
+          Update name
         </Button>
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Launch</Modal.Title>
+            <Modal.Title>Edit</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <Form.Group controlId="formName">
@@ -77,7 +96,7 @@ class InsertModal extends Component {
             </Form.Group>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={this.handleInsert} variant="primary">
+            <Button onClick={this.handleUpdate} variant="primary">
               Save
             </Button>
             <Button onClick={this.handleClose} variant="secondary">
@@ -90,4 +109,4 @@ class InsertModal extends Component {
   }
 }
 
-export default InsertModal;
+export default UpdateModal;

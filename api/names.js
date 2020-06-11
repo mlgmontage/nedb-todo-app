@@ -17,7 +17,7 @@ router.get("/", async (req, res) => {
 
 router.get("/get/:id", async (req, res) => {
   const id = req.params.id;
-  const data = await store.find({ _id: id });
+  const data = await store.findOne({ _id: id });
 
   res.json({
     message: "get",
