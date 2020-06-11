@@ -1,4 +1,11 @@
 const router = require("express").Router();
+const datastore = require("nedb-promise");
+
+// database
+const store = datastore({
+  filename: "data/names.json",
+  autoload: true,
+});
 
 router.get("/", async (req, res) => {
   res.json({
