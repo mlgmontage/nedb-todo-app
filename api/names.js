@@ -15,9 +15,13 @@ router.get("/", async (req, res) => {
   });
 });
 
-router.get("/get", async (req, res) => {
+router.get("/get/:id", async (req, res) => {
+  const id = req.params.id;
+  const data = await store.find({ _id: id });
+
   res.json({
     message: "get",
+    data: data,
   });
 });
 
@@ -33,8 +37,12 @@ router.post("/insert", async (req, res) => {
 });
 
 router.put("/update", async (req, res) => {
+  const id = req.body.id;
+  const newName = req.body.name;
+  const updated = await store.update({ _id: id }, { name: newName }, {});
   res.json({
     message: "update",
+    data: updated,
   });
 });
 
