@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Table, Button } from "react-bootstrap";
+import InsertModal from "../components/names/insertModal";
 
 class Names extends Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class Names extends Component {
       <div>
         <h1>Names</h1>
         <Button variant="primary">+ ADD</Button>
+        <InsertModal updater={this.fetchList} />
         <hr></hr>
         <Table striped hover bordered>
           <thead>
