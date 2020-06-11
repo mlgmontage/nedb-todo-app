@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Table, Button } from "react-bootstrap";
 import InsertModal from "../components/names/insertModal";
+import DeleteButton from "../components/names/deleteButton";
 
 class Names extends Component {
   constructor(props) {
@@ -44,9 +45,12 @@ class Names extends Component {
               <div>loading...</div>
             ) : (
               this.state.list.data.map((data) => (
-                <tr>
+                <tr key={data._id}>
                   <td>{data._id}</td>
                   <td>{data.name}</td>
+                  <td>
+                    <DeleteButton id={data._id} updater={this.fetchList} />
+                  </td>
                 </tr>
               ))
             )}

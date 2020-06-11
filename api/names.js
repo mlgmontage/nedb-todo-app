@@ -48,7 +48,7 @@ router.put("/update", async (req, res) => {
 
 router.delete("/delete", async (req, res) => {
   const id = req.body.id;
-  const deleted = await store.delete({ _id: id });
+  const deleted = await store.remove({ _id: id });
   res.json({
     message: "record has been deleted",
     data: deleted,
