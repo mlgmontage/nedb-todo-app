@@ -10,6 +10,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/todos", require("./api/routes/todos"));
+app.use("/api/notes", require("./api/routes/notes"));
 app.use("/api/auth", require("./api/routes/auth"));
 
 // Error handling
