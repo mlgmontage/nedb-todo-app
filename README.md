@@ -4,8 +4,8 @@
 
 - express
 - NeDB
-- morgan
-- helmet
+- volleyball
+- NeDb-promise
 - cors
 
 ### Front-end
