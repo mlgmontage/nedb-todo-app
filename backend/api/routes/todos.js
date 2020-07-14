@@ -4,7 +4,7 @@ const Todos = require("../models/Todos");
 
 router.get("/", async (req, res) => {
   const todos = await Todos.find({});
-  res.json(todos);
+  res.json({ user: req.user, todos });
 });
 
 router.post("/", async (req, res) => {

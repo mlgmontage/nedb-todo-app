@@ -1,6 +1,7 @@
 const express = require("express");
 const volleyball = require("volleyball");
 const cors = require("cors");
+const middlewares = require("./api/middlewares/authenticate");
 require("dotenv").config();
 
 const app = express();
@@ -9,7 +10,7 @@ app.use(volleyball);
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/todos", require("./api/routes/todos"));
+app.use("/api/todos", middlewares.authToken, require("./api/routes/todos"));
 app.use("/api/notes", require("./api/routes/notes"));
 app.use("/api/auth", require("./api/routes/auth"));
 
