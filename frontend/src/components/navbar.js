@@ -4,18 +4,13 @@ import { NavLink } from "react-router-dom";
 class Navbar extends Component {
   render() {
     return (
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        {/* <NavLink class="navbar-brand" to="/">
-          TODO
-        </NavLink> */}
+      <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+        <NavLink className="navbar-brand" to="/">
+          Todo
+        </NavLink>
 
         <div className="collapse navbar-collapse">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <NavLink activeClassName="active" className="nav-link" to="/">
-                Home
-              </NavLink>
-            </li>
             <li className="nav-item">
               <NavLink
                 activeClassName="active"
